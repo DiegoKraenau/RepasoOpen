@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+#formulario {
+	position: relative !important;
+	left: 70% !important;
+}
+#label{
+	position: relative !important;
+	left: 17% !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<h2 id="label">Agregar Joke</h2>
+    <br/>
+	<div class="row" >
+        <div class="col-md-3 form-horizontal">
+             <form  id="formulario" th:action="@{/jokes/agregar}" method="post" >
+                 <input type="text" class="form-control" name="content" placeholder="Add content">
+                 <br/>
+                 <button class="btn btn-primary" type="submit">Add</button>
+             </form>
+        </div>
+</div>
+	
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

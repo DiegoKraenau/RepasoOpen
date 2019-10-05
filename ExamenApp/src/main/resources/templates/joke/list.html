@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+	<br/>
+	<br/>
+	<a  th:href="@{/jokes/agregar}"  class="btn btn-primary">Add Joke</a>
+	<br/>
+	<br/>
+		<div class="card">
+			
+				<div class="table responsive">
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>Id</th>
+								<th>Content</th>
+								<th>ContentAt</th>
+																
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="joke:${listadoJoke}">
+								<td th:text="${joke.id}"></td>
+								<td th:text="${joke.content}"></td>
+								<td th:text="${joke.contentAt}"></td>
+															
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
