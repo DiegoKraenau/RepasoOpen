@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<h2>Detalles del Proyecto</h2>
+		<a a th:href="@{'/actividades/agregar/' + ${proyecto.id}}" class="btn btn-primary">Agregar Actividad</a>
+	 	<br>
+	 	<br>
+		<div class="card">
+			<div class="card-header text-white bg-secondary">Datos Proyecto</div>
+			<div class="card-body">
+				<ul class="list-group">
+					<li class="list-group-item" th:text="'ID : '+${proyecto.id}"></li>
+					<li class="list-group-item" th:text="'Nombre : '+${proyecto.nombre}"></li>
+					<li class="list-group-item" th:text="'Descripcion : '+${proyecto.descripcion}"></li>
+					<li class="list-group-item" th:text="'Fecha Inicio : '+${proyecto.fechaInicio}"></li>
+					<li class="list-group-item" th:text="'Fecha Fin : '+${proyecto.fechaFin}"></li>
+				</ul>
+				<br/>
+				<a th:href="@{/proyectos/list}" class="btn btn-success">Regresar</a>
+			</div>
+		</div>
+	</div>
+	<div class="card">
+			<div class="card-header text-white bg-secondary">Actividades</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<div th:if="${#lists.isEmpty(proyecto.actividades)}"
+					class="alert alert-info my-4"
+					th:text="'El proyecto '+${proyecto.nombre}+' no tiene actividades'">
+					</div>
+					<table th:if="${not #lists.isEmpty(proyecto.actividades)}"
+					class="table table-striped">
+						<thead class="text-white bg-dark">
+							<tr>
+								<th>Id</th>
+								<th>Descripcion</th>
+								<th>Prioridad</th>
+								<th>FechaInicio</th>
+								<th>FechaFin</th>
+								<th>Estado</th>
+								<th>Programador</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="actividad:${proyecto.actividades}">
+								<td th:text="${actividad.id}"></td>
+								<td th:text="${actividad.descripcion}"></td>
+								<td th:text="${actividad.prioridad}"></td>
+								<td th:text="${actividad.fechaInicio}"></td>
+								<td th:text="${actividad.fechaFin}"></td>
+								<td th:text="${actividad.estado}"></td>
+								<td th:text="${actividad.programador}"></td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

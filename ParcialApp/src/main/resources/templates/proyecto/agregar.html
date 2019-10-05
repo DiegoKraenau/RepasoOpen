@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+#formulario {
+	position: relative !important;
+	left: 70% !important;
+}
+#label{
+	position: relative !important;
+	left: 17% !important;
+}
+</style>
+<body>
+<header th:replace="layout/layout :: header"></header>
+<h2 id="label">Agregar Proyecto</h2>
+<br/>
+<div class="row">
+        <div class="col-md-3 form-horizontal">
+             <form  id="formulario" th:action="@{/proyectos/agregar}" method="post">
+                
+                 <input type="text" class="form-control" name="nombre" placeholder="Ingrese el nombre">
+                 <br/>
+                 <input type="text" class="form-control" name="descripcion" placeholder="Ingrese la descripcion">
+                 <br/>
+                 <input type="date" class="form-control" name="fechaInicio">
+                 <br/>
+                 <input type="date" class="form-control" name="fechaFin">
+                 <br/>
+                 <button class="btn btn-primary" type="submit">Agregar</button>
+             </form>
+        </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<div class="container">
+		<div class="card">
+			<div class="card-header text-white bg-secondary">Buscar Alumnos</div>
+			<div class="card-body">
+				
+				<div class="table responsive">
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>Id</th>
+								<th>Nombre</th>
+								<th>Descripcion</th>
+								<th>FechaInicio</th>
+								<th>FechaFin</th>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="proyecto:${listadoProyecto}">
+								<td th:text="${proyecto.id}"></td>
+								<td th:text="${proyecto.nombre}"></td>
+								<td th:text="${proyecto.descripcion}"></td>
+								<td th:text="${proyecto.fechaInicio}"></td>
+								<td th:text="${proyecto.fechaFin}"></td>
+								<td><a th:href="@{'/proyectos/detalle/' + ${proyecto.id}}"
+									   class="btn btn-success">Detalle</a>
+								</td>									
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
